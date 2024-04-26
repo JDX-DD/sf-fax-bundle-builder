@@ -9,8 +9,8 @@ const SUCCESS_VARIANT = 'success';
 
 export default class BundleBuilderComponent extends LightningElement {
     @api recordId;
-    attachmentOptions = [];
-    selectedAttachmentOptions = [];
+    fileOptions = [];
+    selectedFileOptions = [];
     faxNumberOptions = [];
     selectedFaxNumberOption;
     subject;
@@ -23,7 +23,7 @@ export default class BundleBuilderComponent extends LightningElement {
     buildAttachmentOptions(){
         getAllAttachments({recordId: this.recordId})
         .then((result) => {
-            this.attachmentOptions = result.map(conDoc => {
+            this.fileOptions = result.map(conDoc => {
                 return { label: conDoc.Title, value: conDoc.Id }
             });
         })
@@ -40,13 +40,12 @@ export default class BundleBuilderComponent extends LightningElement {
             });
             this.faxNumberOptions.unshift({ label: '--Select a Recipient--', value: "" });
         } else if (error) {
-            console.log(error);
             this.showToast('Error fetching Fax Numbers', error.message, ERROR_VARIANT);
         }
     }
 
-    handleAttchmentSelection(event){
-        this.selectedAttachmentOptions = event.detail.value;
+    handleFileSelection(event){
+        this.selectedFileOptions = event.detail.value;
     }
 
     handleFaxNumberChange(event){
@@ -57,12 +56,12 @@ export default class BundleBuilderComponent extends LightningElement {
         this.isFaxDisabled = true;
         let subjectInput = this.template.querySelector(".subject_input");        
         this.subject = subjectInput.value;
-        if(this.selectedFaxNumberOption && this.selectedAttachmentOptions && this.selectedAttachmentOptions.length > 0 && this.subject){
-            faxBundle({recordId: this.recordId, selectedFaxPhoneNumber: this.selectedFaxNumberOption, selectedAttachmentIds: this.selectedAttachmentOptions, subject: this.subject})
+        if(this.selectedFaxNumberOption && this.selectedFileOptions && this.selectedFileOptions.length > 0 && this.subject){
+            faxBundle({recordId: this.recordId, selectedFaxPhoneNumber: this.selectedFaxNumberOption, selectedAttachmentIds: this.selectedFileOptions, subject: this.subject})
             .then((result) => {
                 this.showToast('Success!', 'Bundle successfully created!', SUCCESS_VARIANT);
                 this.selectedFaxPhoneNumber = "";
-                this.selectedAttachmentOptions = [];                
+                this.selectedFileOptions = [];                
                 this.subject = '';
                 
             })

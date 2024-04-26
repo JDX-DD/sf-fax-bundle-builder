@@ -12,7 +12,7 @@
 			for (i = 0; i < contentDocuments.length; i++) {
 				results[i] = { label: contentDocuments[i].Title, value: contentDocuments[i].Id }
 			}			
-			component.set("v.availableOptions", results);		
+			component.set("v.fileOptions", results);		
 		});
 		$A.enqueueAction(action);
 	},
@@ -36,7 +36,7 @@
 		let action = component.get("c.faxBundle");
 		let recordId = component.get("v.recordId");
 		let phoneNumber = component.get("v.selectedFaxOption");
-        let contentDocs = component.get("v.selectedOptions");
+        let contentDocs = component.get("v.selectedFileOptions");
 		let subject = component.get("v.subject");
         if(phoneNumber && contentDocs && contentDocs.length > 0 && subject){
             action.setParams({
@@ -50,7 +50,7 @@
                 if (state === "SUCCESS") {
                     let result = response.getReturnValue();
                     component.set("v.selectedFaxOption", null);
-                    component.set("v.selectedOptions", []);
+                    component.set("v.selectedFileOptions", []);
                     component.set("v.subject", "");
                     component.set("v.isFaxDisabled", false);
                     this.throwToast("success", "Success!", "Bundle successfully created!");

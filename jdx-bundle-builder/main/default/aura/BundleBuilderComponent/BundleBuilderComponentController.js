@@ -3,10 +3,10 @@
         helper.getAllAttachments(component, helper);
         helper.getFaxNumbers(component, helper);
     },
-    handleChange : function(component, event, helper) {
+    handleFileSelection : function(component, event, helper) {
         var selectedOptionValue = event.getParam("value");
         if(selectedOptionValue.length > 0){
-            component.set("v.selectedOptions", selectedOptionValue);
+            component.set("v.selectedFileOptions", selectedOptionValue);
         }        
     },
     faxNumChange : function(component, event, helper) {
