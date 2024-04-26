@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>efaxapp__All</fullName>
+    <columns>NAME</columns>
+    <columns>efaxapp__Send_Date__c</columns>
+    <columns>efaxapp__Fax_Number__c</columns>
+    <columns>efaxapp__Contact__c</columns>
+    <columns>efaxapp__Status__c</columns>
+    <columns>efaxapp__Subject__c</columns>
+    <columns>efaxapp__Detailed_Fax_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,31 @@
+# List files or directories below to ignore them when running force:source:push, force:source:pull, and force:source:status
+# More information: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm
+#
+
+# Standard metadata
+package.xml
+**/appMenus/**
+**/appSwitcher/**
+**/objectTranslations/**
+**/profiles/**
+**/settings/**
+
+# LWC configuration files
+**/jsconfig.json
+**/.eslintrc.json
+
+# LWC Jest
+**/__tests__/**
+
+# 3rd party Package
+**/objects/efaxapp__Sent_Fax__c/fields/efaxapp__*
+**/efaxapp__Sent_Fax__c/fieldSets/efaxapp__*
+**/objects/efaxapp__Sent_Fax__c/listViews/efaxapp__*
+**/objects/efaxapp__Sent_Fax__c/recordTypes/efaxapp__*
+**/objects/efaxapp__Sent_Fax__c/webLinks/efaxapp__*
+**/objects/efaxapp__Sent_Fax__c/efaxapp__Sent_Fax__c.object-meta.xml
+
+# Other
+**/objects/Account*
+**/objects/Contact*
+**/permissionsets/sfdcInternalInt__sfdc_scrt2**

@@ -1,0 +1,43 @@
+<aura:component access="global" controller="BundleBuilderController" implements="force:appHostable,flexipage:availableForRecordHome,force:hasRecordId">
+    <!--Handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
+    <!--Navigation-->  
+    <lightning:navigation aura:id="navigation"/>
+    <!--Attributes-->
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="availableOptions" type="List" />
+    <aura:attribute name="selectedOptions" type="List" />
+    <aura:attribute name="defaultOptions" type="List" />
+    <aura:attribute name="selectedFaxOption" type="String"/>
+    <aura:attribute name="faxOptions" type="String[]"/>
+    <aura:attribute name="subject" type="String"/>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-text-heading_medium slds-m-bottom_small slds-border_bottom">Fax Bundle Builder</div>
+        <div class="slds-m-bottom_small">
+            <lightning:dualListbox name="Files"
+                label= "Select Files"
+                class="dualBoxClass"
+                sourceLabel="Available"
+                selectedLabel="Selected"
+                options="{!v.availableOptions}"
+                value="{!v.selectedOptions}"
+                onchange="{!c.handleChange}"
+                max="10"
+                required="true"/>
+        </div>
+        <div class="slds-m-bottom_small">
+            <lightning:select aura:id="fax_number" name="select" label="Fax to Number:" required="true" class="numberBox" onchange="{!c.faxNumChange}">
+                <aura:iteration items="{!v.faxOptions}" var="faxOption">
+                    <option text="{!faxOption.label}" value="{!faxOption.value}"></option>
+                </aura:iteration>
+            </lightning:select>
+        </div>
+        <div class="slds-m-bottom_small">
+            <ui:inputText class="message_input_box" label="Subject :" value="{!v.subject}" required="true" maxlength="255"/>
+        </div>
+        <div class="slds-m-bottom_small slds-align_absolute-center">
+            <ui:button class="button" aura:id="faxButton" label="Fax Bundle" press="{!c.faxBun}"/>
+        </div>
+    </div>
+    
+</aura:component>	
