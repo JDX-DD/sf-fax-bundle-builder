@@ -37,7 +37,7 @@ export default class BundleBuilderComponent extends LightningElement {
             this.faxNumberOptions = data.map(faxNumber => {
                 return { label: faxNumber.Label, value: faxNumber.Phone_Number__c }
             });
-            this.faxNumberOptions.unshift({ label: '--Select a Recipient--', value: '' });
+            this.faxNumberOptions.unshift({ label: '--Select a Recipient--', value: "" });
         } else if (error) {
             console.log(error);
             this.showToast('Error fetching Fax Numbers', error.message, ERROR_VARIANT);
@@ -55,11 +55,12 @@ export default class BundleBuilderComponent extends LightningElement {
     sendFax(){
         let subjectInput = this.template.querySelector(".subject_input");        
         this.subject = subjectInput.value;
-        if(this.recordId && this.selectedFaxNumberOption && this.selectedAttachmentOptions && this.subject){
+        if(this.selectedFaxNumberOption && this.selectedAttachmentOptions && this.selectedAttachmentOptions.length > 0 && this.subject){
             faxBundle({recordId: this.recordId, selectedFaxPhoneNumber: this.selectedFaxNumberOption, selectedAttachmentIds: this.selectedAttachmentOptions, subject: this.subject})
             .then((result) => {
                 this.showToast('Success!', 'Bundle successfully created!', SUCCESS_VARIANT);
-                this.selectedAttachmentOptions = [];
+                this.selectedFaxPhoneNumber = "";
+                this.selectedAttachmentOptions = [];                
                 this.subject = '';
             })
             .catch((error) => {

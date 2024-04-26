@@ -26,7 +26,7 @@
                 required="true"/>
         </div>
         <div class="slds-m-bottom_small">
-            <lightning:select aura:id="fax_number" name="select" label="Fax to Number:" required="true" class="numberBox" onchange="{!c.faxNumChange}">
+            <lightning:select value="{!v.selectedFaxOption}" aura:id="fax_number" name="select" label="Fax to Number:" required="true" class="numberBox" onchange="{!c.faxNumChange}">
                 <aura:iteration items="{!v.faxOptions}" var="faxOption">
                     <option text="{!faxOption.label}" value="{!faxOption.value}"></option>
                 </aura:iteration>

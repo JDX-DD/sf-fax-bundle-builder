@@ -38,7 +38,10 @@
 		let phoneNumber = component.get("v.selectedFaxOption");
         let contentDocs = component.get("v.selectedOptions");
 		let subject = component.get("v.subject");
-        if(phoneNumber && contentDocs && subject){
+        if(phoneNumber && contentDocs && contentDocs.length > 0 && subject){
+            console.log(phoneNumber);
+            console.log(contentDocs);
+            console.log(subject);
             action.setParams({
                 "recordId": recordId,
                 "selectedFaxPhoneNumber":phoneNumber,
@@ -49,7 +52,7 @@
                 let state = response.getState();	
                 if (state === "SUCCESS") {
                     let result = response.getReturnValue();
-                    component.set("v.selectedFaxOption", "");
+                    component.set("v.selectedFaxOption", null);
                     component.set("v.selectedOptions", []);
                     component.set("v.subject", "");
                     this.throwToast("success", "Success!", "Bundle successfully created!");

@@ -9,6 +9,7 @@
                 selected-label="Selected"
                 options={attachmentOptions}
                 value={selectedAttachmentOptions}
+                required
                 onchange={handleAttchmentSelection}></lightning-dual-listbox>
         </div>
         <div class="slds-m-bottom_small">
@@ -17,11 +18,12 @@
                 name="select"
                 label="Fax to Number:"
                 options={faxNumberOptions}
+                value={selectedFaxPhoneNumber}
                 onchange={handleFaxNumberChange}
                 required ></lightning-select>
         </div>
         <div class="slds-m-bottom_small">
-            <lightning-input class="subject_input" type="text" label="Subject : " maxlength="255" value={subject}></lightning-input>
+            <lightning-input class="subject_input" type="text" label="Subject : " maxlength="255" value={subject} required></lightning-input>
         </div>
         <div class="slds-m-bottom_small slds-align_absolute-center">
             <!-- Fax Button -->
