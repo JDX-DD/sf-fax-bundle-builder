@@ -14,7 +14,7 @@ sf package install --package 04t1Y000000gfhVQAQ
 ```
 2. You should now be good to deploy
 ```
-sf poject deploy start
+sf project deploy start
 ```
 3. Once finished you can assign yourself the Bundle Builder Permission Set
 ```
