@@ -27,7 +27,7 @@
         </div>
         <div class="slds-m-bottom_small slds-align_absolute-center">
             <!-- Fax Button -->
-            <lightning-button label="Fax Bundle" title="Fax Bundle" onclick={sendFax} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button label="Fax Bundle" title="Fax Bundle" onclick={sendFax} class="slds-m-left_x-small" disabled={isFaxDisabled}></lightning-button>
         </div>
     </div>
 </template>

@@ -14,6 +14,7 @@ export default class BundleBuilderComponent extends LightningElement {
     faxNumberOptions = [];
     selectedFaxNumberOption;
     subject;
+    isFaxDisabled = false;
 
     connectedCallback() {
         this.buildAttachmentOptions(); 
@@ -53,6 +54,7 @@ export default class BundleBuilderComponent extends LightningElement {
     }
 
     sendFax(){
+        this.isFaxDisabled = true;
         let subjectInput = this.template.querySelector(".subject_input");        
         this.subject = subjectInput.value;
         if(this.selectedFaxNumberOption && this.selectedAttachmentOptions && this.selectedAttachmentOptions.length > 0 && this.subject){
@@ -62,13 +64,18 @@ export default class BundleBuilderComponent extends LightningElement {
                 this.selectedFaxPhoneNumber = "";
                 this.selectedAttachmentOptions = [];                
                 this.subject = '';
+                
             })
             .catch((error) => {
                 this.showToast('Error creating Bundle', error.message, ERROR_VARIANT);
             })
+            .finally(() => {
+                this.isFaxDisabled = false;
+            })
         }
         else{
             this.showToast('Fax Bundle Builder Error', 'All fields are required', ERROR_VARIANT);
+            this.isFaxDisabled = false;
         }
     }
 

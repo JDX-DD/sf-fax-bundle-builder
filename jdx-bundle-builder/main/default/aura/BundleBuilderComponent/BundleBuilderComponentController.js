@@ -14,6 +14,7 @@
         component.set("v.selectedFaxOption", selected);
     }, 
     faxBun : function(component, event, helper) {
+        component.set("v.isFaxDisabled", true);
         helper.sendTheFax(component, helper);
     }
 })
