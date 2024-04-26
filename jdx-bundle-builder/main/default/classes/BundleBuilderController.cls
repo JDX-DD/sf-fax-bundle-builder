@@ -16,11 +16,15 @@ public with sharing class BundleBuilderController {
 
     @AuraEnabled
     public static List<Fax_Phone_Number__mdt> getFaxNumbers(){
-        return [Select Label, Phone_Number__c, Order__c from Fax_Phone_Number__mdt WITH SECURITY_ENFORCED order by Order__c ASC];
+        return getFaxNums();
     }
-    
+
     @AuraEnabled(cacheable=true)
     public static List<Fax_Phone_Number__mdt> getFaxNumbersCached(){
+        return getFaxNums();
+    }
+
+    private static List<Fax_Phone_Number__mdt> getFaxNums(){
         return [Select Label, Phone_Number__c, Order__c from Fax_Phone_Number__mdt WITH SECURITY_ENFORCED order by Order__c ASC];
     }
 
@@ -32,6 +36,7 @@ public with sharing class BundleBuilderController {
             Bundle__c bun = new Bundle__c();
             bun.Subject__c = subject;
             bun.Recipient_Phone_Number__c = selectedFaxPhoneNumber;
+            bun.Origin_Record_Id__c = recordId;
             Map<Id, ContentDocument> contentDocs = new Map<Id, ContentDocument>([Select Id, LatestPublishedVersionId from ContentDocument where Id in: selectedAttachmentIds WITH SECURITY_ENFORCED]);
             List<ContentDocument> orderedConDocs = new List<ContentDocument>();
             //forces content docs to be in selected order
