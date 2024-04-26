@@ -66,7 +66,7 @@ export default class BundleBuilderComponent extends LightningElement {
                 
             })
             .catch((error) => {
-                this.showToast('Error creating Bundle', error.message, ERROR_VARIANT);
+                this.showToast('Error creating Bundle', error.body.message, ERROR_VARIANT);
             })
             .finally(() => {
                 this.isFaxDisabled = false;
