@@ -24,7 +24,6 @@
             let phoneOptions = [];
             phoneOptions.push({ value: null, label: "--Select a Recipient--"});
             for(const phoneRecord of results) {
-                console.log(phoneRecord.Label);
                 phoneOptions.push({ value: phoneRecord.Phone_Number__c, label: phoneRecord.Label});
             }
 			component.set("v.faxOptions", phoneOptions);
@@ -71,7 +70,7 @@
             $A.enqueueAction(action);
         }
         else{
-            this.throwToast("error", "Fax Bundle Builder Error", "All Fields are required");
+            this.throwToast("error", "Fax Bundle Builder Error", "All fields are required");
         }		
 	}, 
 

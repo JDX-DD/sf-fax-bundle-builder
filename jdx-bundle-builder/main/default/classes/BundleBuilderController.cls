@@ -18,6 +18,11 @@ public with sharing class BundleBuilderController {
     public static List<Fax_Phone_Number__mdt> getFaxNumbers(){
         return [Select Label, Phone_Number__c, Order__c from Fax_Phone_Number__mdt WITH SECURITY_ENFORCED order by Order__c ASC];
     }
+    
+    @AuraEnabled(cacheable=true)
+    public static List<Fax_Phone_Number__mdt> getFaxNumbersCached(){
+        return [Select Label, Phone_Number__c, Order__c from Fax_Phone_Number__mdt WITH SECURITY_ENFORCED order by Order__c ASC];
+    }
 
     @AuraEnabled
     public static Boolean faxBundle(Id recordId, String selectedFaxPhoneNumber, List<String> selectedAttachmentIds, String subject){
