@@ -32,6 +32,11 @@ export default class BundleBuilderComponent extends LightningElement {
         })
     }
 
+    refreshAttachmentOptions(){
+        this.selectedFileOptions = [];    
+        this.buildAttachmentOptions();
+    }
+
     @wire(getFaxNumbersCached)
     faxNumbers({ error, data }) {
         if (data) {

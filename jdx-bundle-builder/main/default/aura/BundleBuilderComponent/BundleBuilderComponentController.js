@@ -16,5 +16,9 @@
     faxBun : function(component, event, helper) {
         component.set("v.isFaxDisabled", true);
         helper.sendTheFax(component, helper);
+    },
+    refreshFileOptions :function(component, event, helper) {
+        component.set("v.selectedFileOptions", []);
+        helper.getAllAttachments(component, helper);
     }
 })
