@@ -1,11 +1,13 @@
 # Bundle Builder
 
 This is a simple aura component I built a while back.  In combination with the 3rd party package RS Fax it allows the user to easily fax multiple documents with a single click. 
-The component can be dropped on any record page and will allow you to bundle up to 10 attachments (I've added a few pdf files to use if you need in the data/attachments folder).
+The component can be dropped on any record page and will allow you to bundle up to 10 attachments (I've added a few pdf files to use if you need in the data/attachments folder).  
+
+The purpose of the repository is to demonstrate a 1 to 1 rebuild of an exisiting aura component to an LWC component.  
 
 
-![Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/bundlebuilderui.png?raw=true)
-
+![Aura Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/aruabundleui.png?raw=true)
+![LWC Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/lwcbundleui.png?raw=true)
 ## Setup
 
 1.  Once you have created a new scratch org install the RS Fax package

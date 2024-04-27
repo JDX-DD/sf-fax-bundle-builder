@@ -232,6 +232,12 @@
                 <identifier>c_BundleBuilderComponent</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>bundleBuilderComponentLWC</componentName>
+                <identifier>c_bundleBuilderComponentLWC</identifier>
+            </componentInstance>
+        </itemInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
         <type>Region</type>
