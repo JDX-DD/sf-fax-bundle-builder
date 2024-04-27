@@ -12,7 +12,7 @@
 			for (i = 0; i < contentDocuments.length; i++) {
 				results[i] = { label: contentDocuments[i].Title, value: contentDocuments[i].Id }
 			}			
-			component.set("v.availableOptions", results);		
+			component.set("v.fileOptions", results);		
 		});
 		$A.enqueueAction(action);
 	},
@@ -24,7 +24,6 @@
             let phoneOptions = [];
             phoneOptions.push({ value: null, label: "--Select a Recipient--"});
             for(const phoneRecord of results) {
-                console.log(phoneRecord.Label);
                 phoneOptions.push({ value: phoneRecord.Phone_Number__c, label: phoneRecord.Label});
             }
 			component.set("v.faxOptions", phoneOptions);
@@ -37,9 +36,9 @@
 		let action = component.get("c.faxBundle");
 		let recordId = component.get("v.recordId");
 		let phoneNumber = component.get("v.selectedFaxOption");
-        let contentDocs = component.get("v.selectedOptions");
+        let contentDocs = component.get("v.selectedFileOptions");
 		let subject = component.get("v.subject");
-        if(phoneNumber && contentDocs && subject){
+        if(phoneNumber && contentDocs && contentDocs.length > 0 && subject){
             action.setParams({
                 "recordId": recordId,
                 "selectedFaxPhoneNumber":phoneNumber,
@@ -50,9 +49,10 @@
                 let state = response.getState();	
                 if (state === "SUCCESS") {
                     let result = response.getReturnValue();
-                    component.set("v.selectedFaxOption", "");
-                    component.set("v.selectedOptions", []);
+                    component.set("v.selectedFaxOption", null);
+                    component.set("v.selectedFileOptions", []);
                     component.set("v.subject", "");
+                    component.set("v.isFaxDisabled", false);
                     this.throwToast("success", "Success!", "Bundle successfully created!");
                 }
                 else{
@@ -66,12 +66,14 @@
                         console.log("Unknown error");
                         this.throwToast("error", "Error creating Bundle", "Unknown Error");
                     }
+                    component.set("v.isFaxDisabled", false);
                 }					
             });
             $A.enqueueAction(action);
         }
         else{
-            this.throwToast("error", "Fax Bundle Builder Error", "All Fields are required");
+            this.throwToast("error", "Fax Bundle Builder Error", "All fields are required");
+            component.set("v.isFaxDisabled", false);
         }		
 	}, 
 
