@@ -34,7 +34,7 @@ sf org assign permset --name Bundle_Builder_Permission_Set
 A Few Notes:
 - To send a fax with RS Fax a Sent Fax record needs to be created
 - Bundle Builder first creates a Bundle record to hold all attachments and information about Sent Fax, the Sent Fax record is then created as a child record of the Bundle
-- Don't worry creating the Sent Fax record will not actually send the fax (I would use fake number even so)
+- Don't worry creating the Sent Fax record will not actually send the fax (I would use fake numbers even so)
 - The Sent Fax record does allow for sending multiple documents by using the efaxapp__Attachment_ID2__c through efaxapp__Attachment_ID10__c fields however these are not available 
 in their scratch org package so the code that refrences them is commented out
 
