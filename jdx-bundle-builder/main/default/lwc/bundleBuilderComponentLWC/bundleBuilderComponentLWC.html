@@ -1,0 +1,42 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-text-heading_medium slds-m-bottom_small slds-border_bottom">
+            <div class="slds-clearfix">
+                <div class="slds-float_left slds-p-bottom_xx-small slds-p-top_xx-small">
+                    Fax Bundle Builder (LWC)
+                </div>
+                <div class="slds-float_right">
+                    <lightning-button-icon icon-name="utility:refresh" alternative-text="Refresh Files"  title="Refresh Files" onclick={refreshAttachmentOptions}></lightning-button-icon>
+                </div>
+            </div>
+        </div>
+        <div class="slds-m-bottom_small">
+            <lightning-dual-listbox name="Files"
+                label="Select Files"
+                class="dualBoxClass"
+                source-label="Available"
+                selected-label="Selected"
+                options={fileOptions}
+                value={selectedFileOptions}                
+                onchange={handleFileSelection}
+                max="10"
+                required></lightning-dual-listbox>
+        </div>
+        <div class="slds-m-bottom_small">
+            <lightning-select
+                name="Fax Numbers"
+                label="Fax to Number:"
+                class="numberBox"
+                options={faxNumberOptions}
+                value={selectedFaxPhoneNumber}
+                onchange={handleFaxNumberChange}                
+                required ></lightning-select>
+        </div>
+        <div class="slds-m-bottom_small">
+            <lightning-input class="subject_input" type="text" label="Subject : " maxlength="255" value={subject} required max-length="255"></lightning-input>
+        </div>
+        <div class="slds-m-bottom_small slds-align_absolute-center">
+            <lightning-button class="button"  label="Fax Bundle" title="Fax Bundle" onclick={sendFax} disabled={isFaxDisabled}></lightning-button>
+        </div>
+    </div>
+</template>

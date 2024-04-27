@@ -5,38 +5,49 @@
     <lightning:navigation aura:id="navigation"/>
     <!--Attributes-->
     <aura:attribute name="recordId" type="Id" />
-    <aura:attribute name="availableOptions" type="List" />
-    <aura:attribute name="selectedOptions" type="List" />
+    <aura:attribute name="fileOptions" type="List" />
+    <aura:attribute name="selectedFileOptions" type="List" />
     <aura:attribute name="defaultOptions" type="List" />
     <aura:attribute name="selectedFaxOption" type="String"/>
     <aura:attribute name="faxOptions" type="String[]"/>
     <aura:attribute name="subject" type="String"/>
+    <aura:attribute name="isFaxDisabled" type = "boolean" default="false"/>
+
     <div class="slds-box slds-theme_default">
-        <div class="slds-text-heading_medium slds-m-bottom_small slds-border_bottom">Fax Bundle Builder</div>
+        <div class="slds-text-heading_medium slds-m-bottom_small slds-border_bottom">
+            <div class="slds-clearfix">
+                <div class="slds-float_left slds-p-bottom_xx-small slds-p-top_xx-small">
+                    Fax Bundle Builder (aura)
+                </div>
+                <div class="slds-float_right">
+                    <lightning:buttonIcon iconName="utility:refresh"  alternativeText="Refresh Files" title="Refresh Files" onclick="{!c.refreshFileOptions}"/>
+                </div>
+            </div>
+        </div>
         <div class="slds-m-bottom_small">
             <lightning:dualListbox name="Files"
                 label= "Select Files"
                 class="dualBoxClass"
                 sourceLabel="Available"
                 selectedLabel="Selected"
-                options="{!v.availableOptions}"
-                value="{!v.selectedOptions}"
-                onchange="{!c.handleChange}"
+                options="{!v.fileOptions}"
+                value="{!v.selectedFileOptions}"
+                onchange="{!c.handleFileSelection}"
                 max="10"
                 required="true"/>
         </div>
         <div class="slds-m-bottom_small">
-            <lightning:select aura:id="fax_number" name="select" label="Fax to Number:" required="true" class="numberBox" onchange="{!c.faxNumChange}">
+            <lightning:select value="{!v.selectedFaxOption}" aura:id="fax_number" name="Fax Numbers" label="Fax to Number:" required="true" class="numberBox" onchange="{!c.faxNumChange}">
                 <aura:iteration items="{!v.faxOptions}" var="faxOption">
                     <option text="{!faxOption.label}" value="{!faxOption.value}"></option>
                 </aura:iteration>
             </lightning:select>
         </div>
         <div class="slds-m-bottom_small">
-            <ui:inputText class="message_input_box" label="Subject :" value="{!v.subject}" required="true" maxlength="255"/>
+            <ui:inputText class="subject_input" label="Subject :" value="{!v.subject}" required="true" maxlength="255"/>
         </div>
         <div class="slds-m-bottom_small slds-align_absolute-center">
-            <ui:button class="button" aura:id="faxButton" label="Fax Bundle" press="{!c.faxBun}"/>
+            <ui:button class="button" aura:id="faxButton" label="Fax Bundle" press="{!c.faxBun}" disabled = "{!v.isFaxDisabled}"/>
         </div>
     </div>
     
