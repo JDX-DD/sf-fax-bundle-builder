@@ -1,7 +1,7 @@
 # Bundle Builder
 
 This is a simple aura component I built a while back.  In combination with the 3rd party package RS Fax it allows the user to easily fax multiple documents with a single click. 
-The component can be dropped on any record page and will allow you to bundle up to 10 attachments (I've added a few pdf files to use if you need in the data/attachments folder).  
+The component can be dropped on any record page and will allow you to bundle up to 10 attachments (I've added a few pdf files to use if you need in the documents/attachments folder).
 
 The purpose of the repository is to demonstrate a 1 to 1 rebuild of an exisiting aura component to an LWC component.  
 
@@ -24,11 +24,11 @@ sf org assign permset --name Bundle_Builder_Permission_Set
 ```
 4. Next you will need to do some configuration
 * Go to the Auth Settings custom setting and create a new default org level value (This is the phone number the fax will be sent from)  
-![Auth Settings](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/authsettings.png)
+![Auth Settings](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/documents/images/authsettings.png)
 * You can drop this component on any record page, however i did provide account and contact lightning pages that you can activate  
-![Lightning Pages](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/lightningpages.png)
+![Lightning Pages](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/documents/images/lightningpages.png)
 5. You should now be good to navigate to the Bundle Builder Demo App, create an Account and or Contact record, add Attachments and GO!  
-![Lightning Pages](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/bundlebuilderdemoapp.png)
+![Lightning Pages](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/documents/images/bundlebuilderdemoapp.png)
 
 
 A Few Notes:
