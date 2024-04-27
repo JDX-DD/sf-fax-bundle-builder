@@ -6,8 +6,8 @@ The component can be dropped on any record page and will allow you to bundle up 
 The purpose of the repository is to demonstrate a 1 to 1 rebuild of an exisiting aura component to an LWC component.  
 
 
-![Aura Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/aruabundleui.png?raw=true)
-![LWC Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/data/images/lwcbundleui.png?raw=true)
+![Aura Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/documents/images/aruabundleui.png?raw=true)
+![LWC Bundle Builder UI](https://github.com/JDX-DD/sf-fax-bundle-builder/blob/master/documents/images/lwcbundleui.png?raw=true)
 ## Setup
 
 1.  Once you have created a new scratch org install the RS Fax package
