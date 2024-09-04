@@ -29,3 +29,7 @@ package.xml
 **/objects/Account*
 **/objects/Contact*
 **/permissionsets/sfdcInternalInt__sfdc_scrt2**
+
+**/tsconfig.json
+
+**/*.ts
